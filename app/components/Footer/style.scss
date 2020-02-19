@@ -1,3 +1,5 @@
+@import '../../styles/global-styles.scss';
+
 footer {
   display: flex;
   justify-content: space-between;
@@ -10,5 +12,23 @@ footer {
     &:hover {
       color: #6cc0e5;
     }
+  }
+}
+.window {
+  position: absolute;
+  bottom: 100px;
+  .frame {
+    width: 220px;
+    height: 300px;
+    overflow: hidden;
+    img {
+      margin-top: -220px;
+      margin-left: -400px;
+    }
+  }
+  p {
+    color: $theme-alt;
+    font-size: 20px;
+    text-align: right;
   }
 }

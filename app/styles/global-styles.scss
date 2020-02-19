@@ -1,3 +1,18 @@
+$theme-alt: #000000;
+$theme-base: rgb(255, 255, 255);
+$theme-link: rgb(4, 0, 255);
+$theme-hov: magenta;
+$font-sans: Arial;
+$font-serif: Times;
+$gutter-size: 30px;
+@import url("https://use.typekit.net/ffv6izs.css");
+
+@mixin Sabon($style: normal, $weight: 400) {
+  font-family: linotype-sabon, sans-serif;
+  font-weight: $weight;
+  font-style: $style; 
+}
+
 html,
 body {
   height: 100%;
@@ -13,7 +28,7 @@ body.fontLoaded {
 }
 
 #app {
-  background-color: #fafafa;
+  background-color: $theme-base;
   min-height: 100%;
   min-width: 100%;
 }

@@ -25,6 +25,16 @@ const makeSelectRepos = () => createSelector(
   (globalState) => globalState.userData.repositories
 );
 
+const makeSelectPortfolio = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.portfolio
+);
+
+const makeSelectPortfolioCount = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.portfolioCount
+);
+
 const makeSelectLocation = () => createSelector(
   selectRoute,
   (routeState) => routeState.location
@@ -36,5 +46,7 @@ export {
   makeSelectLoading,
   makeSelectError,
   makeSelectRepos,
+  makeSelectPortfolio,
+  makeSelectPortfolioCount,
   makeSelectLocation,
 };

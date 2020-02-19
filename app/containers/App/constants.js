@@ -13,3 +13,8 @@ export const LOAD_REPOS = 'boilerplate/App/LOAD_REPOS';
 export const LOAD_REPOS_SUCCESS = 'boilerplate/App/LOAD_REPOS_SUCCESS';
 export const LOAD_REPOS_ERROR = 'boilerplate/App/LOAD_REPOS_ERROR';
 export const DEFAULT_LOCALE = 'en';
+
+export const LOAD_PORTFOLIO = 'boilerplate/App/LOAD_PORTFOLIO';
+export const LOAD_PORTFOLIO_SUCCESS = 'boilerplate/App/LOAD_PORTFOLIO_SUCCESS';
+export const LOAD_PORTFOLIO_ERROR = 'boilerplate/App/LOAD_PORTFOLIO_ERROR';
+export const UPDATE_PORTFOLIO_COUNT = 'boilerplate/App/UPDATE_PORTFOLIO_COUNT';

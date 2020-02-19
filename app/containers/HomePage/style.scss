@@ -1,32 +1,33 @@
+@import '../../styles/global-styles.scss';
+
 .home-page {
-  
-  h2 {
-    font-size: 1.5em;
-  }
-  
-  section {
-    margin: 3em auto;
+  background-color: $theme-alt;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr 150px 1fr;
+  grid-template-rows: 1fr 300px 1fr;
+  grid-column-gap: $gutter-size;
 
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &.centered {
-      text-align: center;
-    }
-  }
-
-  form {
-    margin-bottom: 1em;
-
-    input {
-      outline: none;
-      border-bottom: 1px dotted #999;
-    }
+  .window {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    // grid-row-start: 1;
+    // grid-row-end: 4;
+    align-self: stretch;
   }
 
-  span.at-prefix {
-    color: black;
-    margin-left: 0.4em;
+  .faerie-orb {
+    grid-column-start: 2;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    // img.em {
+    //   filter: invert(.35);
+    //   border-radius: 0px;
+    // }
   }
 }

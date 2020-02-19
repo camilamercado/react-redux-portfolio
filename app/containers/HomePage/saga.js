@@ -6,7 +6,7 @@ import {
   call, put, select, takeLatest
 } from 'redux-saga/effects';
 import { LOAD_REPOS } from 'containers/App/constants';
-import { reposLoaded, repoLoadingError } from 'containers/App/actions';
+import { reposLoaded, repoLoadingError, portfolioLoaded, portfolioLoadingError } from 'containers/App/actions';
 
 import request from 'utils/request';
 import { makeSelectUsername } from 'containers/HomePage/selectors';
@@ -14,6 +14,16 @@ import { makeSelectUsername } from 'containers/HomePage/selectors';
 /**
  * Github repos request/response handler
  */
+export function* getPortfolio() {
+  const portfolio = 'PORTFOLIO ENTRY';
+  try {
+    portfolioLoaded(portfolio);
+  } catch (err) {
+    yield put(portfolioLoadingError(err));
+  }
+}
+
+
 export function* getRepos() {
   // Select username from store
   const username = yield select(makeSelectUsername());

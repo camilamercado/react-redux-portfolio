@@ -3,12 +3,15 @@ import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
+import portfolioData from 'database/data';
+
 import {
   makeSelectRepos,
+  makeSelectPortfolio,
   makeSelectLoading,
   makeSelectError
 } from 'containers/App/selectors';
-import { loadRepos } from '../App/actions';
+import { loadRepos, portfolioLoaded } from '../App/actions';
 import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
@@ -20,11 +23,16 @@ const mapDispatchToProps = (dispatch) => ({
   onSubmitForm: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     dispatch(loadRepos());
+  },
+  onInit: (evt) => {
+    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    dispatch(portfolioLoaded(portfolioData));
   }
 });
 
 const mapStateToProps = createStructuredSelector({
   repos: makeSelectRepos(),
+  portfolio: makeSelectPortfolio(),
   username: makeSelectUsername(),
   loading: makeSelectLoading(),
   error: makeSelectError()

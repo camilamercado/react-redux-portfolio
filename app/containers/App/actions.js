@@ -19,6 +19,10 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
+  LOAD_PORTFOLIO,
+  LOAD_PORTFOLIO_SUCCESS,
+  LOAD_PORTFOLIO_ERROR,
+  UPDATE_PORTFOLIO_COUNT,
 } from './constants';
 
 /**
@@ -29,6 +33,24 @@ import {
 export function loadRepos() {
   return {
     type: LOAD_REPOS,
+  };
+}
+
+export function loadPortfolio() {
+  return { type: LOAD_PORTFOLIO };
+}
+
+export function updatePortfolioCount(count) {
+  return {
+    type: UPDATE_PORTFOLIO_COUNT,
+    count,
+  };
+}
+
+export function portfolioLoaded(portfolio) {
+  return {
+    type: LOAD_PORTFOLIO_SUCCESS,
+    portfolio,
   };
 }
 
@@ -58,6 +80,13 @@ export function reposLoaded(repos, username) {
 export function repoLoadingError(error) {
   return {
     type: LOAD_REPOS_ERROR,
+    error,
+  };
+}
+
+export function portfolioLoadingError(error) {
+  return {
+    type: LOAD_PORTFOLIO_ERROR,
     error,
   };
 }

@@ -1,0 +1,35 @@
+@import '../../styles/global-styles.scss';
+.portfolio-page {
+  padding: $gutter-size;
+  .header {
+    position: absolute;
+    top: 0px;
+    height:calc(#{$gutter-size} /2);
+    // height:50vh;
+    transition: height .5s ease;
+    background-color: red;
+    z-index: 10;
+    &:hover {
+      height:50vh;
+    }
+    .nav-bar {
+      width: 45%;
+      ul {
+        margin-top: 0px;
+        h1 {
+          margin-bottom: $gutter-size;
+        }
+        li {
+          a {
+            text-decoration: none;
+          }
+          &.active {
+            a {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

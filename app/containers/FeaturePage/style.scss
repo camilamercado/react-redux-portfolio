@@ -1,18 +1,115 @@
-.feature-page {
-  h1 {
-    font-size: 2em;
-    margin-bottom: 0.25em;
+
+@import '../../styles/global-styles.scss';
+  * {
+      color: $theme-alt;
+      @include Sabon;
   }
-  
-  ul {
-    font-family: Georgia, Times, 'Times New Roman', serif;
-    padding-left: 1.75em;
-
-    li {
-      margin: 1em 0;
-
-      p.title {
-        font-weight: bold;
+.portfolio-spread {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  display: grid;
+  height:  calc(100vh - (#{$gutter-size} * 2));
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: calc(#{$gutter-size} * 2) 1fr calc(#{$gutter-size} * 2);
+  grid-column-gap: $gutter-size;
+  .left {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    align-self: stretch;
+    border: 1px solid $theme-alt;
+    .img-container {
+      height: calc(100% - #{$gutter-size});
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 50%;
+        height: auto;
+        max-height: 80vh;
+      }
+    }
+    .img-counter {
+      @include Sabon(italic, 400);
+      text-align: center;
+      letter-spacing: 1px;;
+    }
+  }
+  .right {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    align-self: center;
+    .text-container {
+      max-width: 700px;
+      margin: auto;
+      * { text-align: center; }
+      h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+        letter-spacing: 1px;;
+      }
+      a {
+        display: block;
+        text-decoration: none;
+        @include Sabon(italic, 400);
+        color: $theme-link;
+      }
+      ul {
+        list-style-type: none;
+        padding-left: 0px;
+        li {
+          text-transform: uppercase;
+          @include Sabon(italic, 400);
+        }
+      }
+    }
+  }
+  .portfolio-nav {
+    z-index: 1;
+    a {
+      text-decoration: none;
+    }
+    h2, span {
+      height: $gutter-size;
+      line-height: $gutter-size;
+      padding: 0px;
+      margin: 0px;
+      text-align: justify;
+      display: block;
+      &:after { /* Justify last line */
+        content: '';
+        display: inline-block;
+        width: 100%;
+      }
+    }
+    h2 {
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+    }
+    span {
+      @include Sabon(italic, 400);
+    }
+    &.last {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+    }
+    &.next {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 3;
+      grid-row-end: 4;
+    }
+    &:hover {
+      h2 {
+        color: $theme-hov;
       }
     }
   }

@@ -23,6 +23,7 @@ import {
   LOAD_PORTFOLIO_SUCCESS,
   LOAD_PORTFOLIO_ERROR,
   UPDATE_PORTFOLIO_COUNT,
+  SET_PORTFOLIO_CURRENT,
 } from './constants';
 
 /**
@@ -51,6 +52,13 @@ export function portfolioLoaded(portfolio) {
   return {
     type: LOAD_PORTFOLIO_SUCCESS,
     portfolio,
+  };
+}
+
+export function updatePortfolioCurrent(entry) {
+  return {
+    type: SET_PORTFOLIO_CURRENT,
+    entry,
   };
 }
 

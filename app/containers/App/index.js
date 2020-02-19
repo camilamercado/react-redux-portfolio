@@ -6,24 +6,29 @@ import portfolioData from 'database/data';
 import {
   makeSelectPortfolio,
   makeSelectPortfolioCount,
+  makeSelectPortfolioCurrent,
 } from 'containers/App/selectors';
-import { portfolioLoaded, updatePortfolioCount } from './actions';
+import { portfolioLoaded, updatePortfolioCount, updatePortfolioCurrent } from './actions';
 import App from './App';
 
 const mapDispatchToProps = (dispatch) => ({
   onInit: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     dispatch(portfolioLoaded(portfolioData));
+    dispatch(portfolioLoaded(portfolioData));
+    dispatch(updatePortfolioCurrent(portfolioData[0]));
   },
   updatePortfolioCount: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     dispatch(updatePortfolioCount(evt));
+    dispatch(updatePortfolioCurrent(portfolioData[evt]));
   }
 });
 
 const mapStateToProps = createStructuredSelector({
   portfolio: makeSelectPortfolio(),
   portfolioCount: makeSelectPortfolioCount(),
+  portfolioCurrent: makeSelectPortfolioCurrent(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

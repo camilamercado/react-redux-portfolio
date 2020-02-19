@@ -35,6 +35,11 @@ const makeSelectPortfolioCount = () => createSelector(
   (globalState) => globalState.portfolioCount
 );
 
+const makeSelectPortfolioCurrent = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.portfolioCurrent
+);
+
 const makeSelectLocation = () => createSelector(
   selectRoute,
   (routeState) => routeState.location
@@ -49,4 +54,5 @@ export {
   makeSelectPortfolio,
   makeSelectPortfolioCount,
   makeSelectLocation,
+  makeSelectPortfolioCurrent,
 };

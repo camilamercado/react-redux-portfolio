@@ -18,3 +18,4 @@ export const LOAD_PORTFOLIO = 'boilerplate/App/LOAD_PORTFOLIO';
 export const LOAD_PORTFOLIO_SUCCESS = 'boilerplate/App/LOAD_PORTFOLIO_SUCCESS';
 export const LOAD_PORTFOLIO_ERROR = 'boilerplate/App/LOAD_PORTFOLIO_ERROR';
 export const UPDATE_PORTFOLIO_COUNT = 'boilerplate/App/UPDATE_PORTFOLIO_COUNT';
+export const SET_PORTFOLIO_CURRENT = 'boilerplate/App/SET_PORTFOLIO_CURRENT';

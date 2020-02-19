@@ -13,7 +13,6 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
             <Link className="router-link" to="/">
             HOME
             </Link>
-            
             <ul>
               <h1>Work</h1>
               {portfolio.map((item) => <li className={item.id === portfolio[portfolioCount].id ? 'active' : null} key={item.id}><Link to={`${match.path}/${item.id}`}>{item.projectTitle}</Link></li>)}

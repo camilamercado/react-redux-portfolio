@@ -1,19 +1,51 @@
 @import '../../styles/global-styles.scss';
 .portfolio-page {
   padding: $gutter-size;
+  background: $theme-base-secondary;
+  //background: $theme-base;
+
+  // @include desktop-narrow {
+  //   font-size: 15px;
+  // } 
+  @include mobile-tablet {
+    padding: calc(#{$gutter-size} * 2) $gutter-size;
+  } 
   .header {
     position: absolute;
     top: 0px;
     height:calc(#{$gutter-size} /2);
-    // height:50vh;
     transition: height .5s ease;
-    background-color: red;
+    background-color: $theme-nav;
     z-index: 10;
+    font-size: 30px;
+    line-height: 30px;
+    @include mobile-tablet {
+      height:$gutter-size;
+    } 
     &:hover {
       height:50vh;
     }
     .nav-bar {
-      width: 45%;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-column-gap: 10px;
+      justify-items: center;
+      align-items: start;
+      @include desktop-narrow {
+        width: 90%;
+      }
+      @include mobile-tablet {
+        width: 100%;
+      } 
+      h1, a {
+        font-size: 1em;
+        line-height: 1em;
+      }
+      a {
+        &:hover {
+          color: $theme-link;
+        }
+      }
       ul {
         margin-top: 0px;
         h1 {

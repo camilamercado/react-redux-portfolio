@@ -7,7 +7,7 @@ import {
   makeSelectPortfolio,
   makeSelectPortfolioCount,
 } from 'containers/App/selectors';
-import { portfolioLoaded, updatePortfolioCount } from '../App/actions';
+import { portfolioLoaded, updatePortfolioCount, updatePortfolioCurrent } from '../App/actions';
 import FeaturePage from './FeaturePage';
 
 const mapDispatchToProps = (dispatch) => ({
@@ -18,6 +18,10 @@ const mapDispatchToProps = (dispatch) => ({
   updatePortfolioCount: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     dispatch(updatePortfolioCount(evt));
+  },
+  updatePortfolioCurrent: (evt) => {
+    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+    dispatch(updatePortfolioCurrent(evt));
   }
 });
 

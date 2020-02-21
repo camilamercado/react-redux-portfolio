@@ -15,12 +15,13 @@ const mapDispatchToProps = (dispatch) => ({
   onInit: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     dispatch(portfolioLoaded(portfolioData));
-    dispatch(portfolioLoaded(portfolioData));
     dispatch(updatePortfolioCurrent(portfolioData[0]));
   },
   updatePortfolioCount: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     dispatch(updatePortfolioCount(evt));
+  },
+  updatePortfolioCurrent: (evt) => {
     dispatch(updatePortfolioCurrent(portfolioData[evt]));
   }
 });

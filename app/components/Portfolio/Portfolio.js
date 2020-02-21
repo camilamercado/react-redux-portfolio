@@ -26,7 +26,7 @@ class Portfolio extends Component { // eslint-disable-line react/prefer-stateles
 }
 
 Portfolio.propTypes = {
-  portfolio: PropTypes.object,
+  portfolio: PropTypes.array,
   match: PropTypes.object,
   portfolioCount: PropTypes.number,
   onInit: PropTypes.func

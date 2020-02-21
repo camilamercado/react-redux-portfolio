@@ -1,14 +1,7 @@
 @import '../../styles/global-styles.scss';
 .portfolio-page {
-  padding: $gutter-size;
-  background: $theme-base-secondary;
-  //background: $theme-base;
-
-  // @include desktop-narrow {
-  //   font-size: 15px;
-  // } 
   @include mobile-tablet {
-    padding: calc(#{$gutter-size} * 2) $gutter-size;
+    // padding: calc(#{$gutter-size} * 2) $gutter-size;
   } 
   .header {
     position: absolute;

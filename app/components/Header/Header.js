@@ -36,7 +36,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
 
 Header.propTypes = {
   match: PropTypes.object,
-  portfolio: PropTypes.object,
+  portfolio: PropTypes.array,
 };
 
 export default Header;

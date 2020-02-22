@@ -8,7 +8,7 @@ const data = [
     media: [
       {
         mediaSrc: '392824541',
-        video: 'true',
+        video: true,
         caption: 'Felicia',
       },
       {
@@ -18,7 +18,7 @@ const data = [
       },
       {
         mediaSrc: '392826478',
-        video: 'true',
+        video: true,
         caption: 'Felicia',
       },
     ]
@@ -34,6 +34,11 @@ const data = [
       {
         mediaSrc: 'https://i.pinimg.com/originals/c0/d3/79/c0d37949035f7009335382fecfebd291.jpg',
         class: 'full-width',
+        caption: 'Felicia',
+      },
+      {
+        mediaSrc: 'risk-pool_02.png',
+        local: true,
         caption: 'Felicia',
       },
     ]

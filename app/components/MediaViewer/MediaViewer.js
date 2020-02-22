@@ -2,29 +2,27 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
-function mapFiles(context) {
+function mapFiles(context, currentMedia) {
   const keys = context.keys();
   const values = keys.map(context);
-  return keys.reduce((accumulator, key, index) => ({
+  const arr = keys.reduce((accumulator, key, index) => ({
     ...accumulator,
     [key.substring(2)]: values[index],
   }), {});
+
+  return arr[currentMedia];
 }
 
 class MediaViewer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      count: 0,
-      gridSetting: 'Expand'
-
-    };
+    this.state = { count: 0 };
   }
 
   componentDidUpdate(prevProps) {
-    const { media } = this.props;
+    const { media, updateMediaSetting } = this.props;
     if (media !== prevProps.media) {
-      this.setState(() => ({ count: 0, gridSetting: 'Expand' }));
+      updateMediaSetting(false);
     }
   }
 
@@ -38,21 +36,19 @@ class MediaViewer extends React.Component {
   };
 
   handleClickExpander = () => {
-    const { gridSetting } = this.state;
-    const newSetting = gridSetting === 'Expand' ? 'Reduce' : 'Expand';
-    this.setState(() => ({
-      gridSetting: newSetting
-    }));
+    const { mediaSetting, updateMediaSetting } = this.props;
+    updateMediaSetting(!mediaSetting);
   };
 
   render() {
-    const { media } = this.props;
-    const { count, gridSetting } = this.state;
-    const allMedia = mapFiles(require.context('../../database/media', true, /\.(png|gif|ico|jpg|jpeg)$/));
-    const currentMedia = media.length < count ? media[0].mediaSrc : media[count].mediaSrc;
+    const { media, mediaSetting } = this.props;
+    const { count } = this.state;
+    const newCount = count > media.length - 1 ? 0 : count;
+    const currentMedia = media[newCount].mediaSrc;
     const vimeoSrc = `https://player.vimeo.com/video/${currentMedia}?autoplay=1&loop=1&autopause=0&background=1`;
-    const imgSrc = media[count].local ? allMedia[currentMedia] : currentMedia;
-    const mediaElement = media[count].video ? <iframe src={vimeoSrc} title="myFrame" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe> : <img alt="" src={imgSrc} />;
+    const imgSrc = media[newCount].local ? mapFiles(require.context('../../database/media', true, /\.(png|gif|ico|jpg|jpeg)$/), currentMedia) : currentMedia;
+    const mediaElement = media[newCount].video ? <iframe src={vimeoSrc} title="myFrame" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe> : <img alt="" src={imgSrc} />;
+    const settingLabel = mediaSetting ? 'Reduce' : 'Expand';
 
     return (
       <section className="mediaViewer">
@@ -68,7 +64,7 @@ class MediaViewer extends React.Component {
           <div className="loader"></div>
         </div>
         <figure
-          className={media[count].class ? `img-container ${media[count].class}` : 'img-container'}
+          className={media[newCount].class ? `img-container ${media[newCount].class}` : 'img-container'}
         >
           {mediaElement}
         </figure>
@@ -83,7 +79,7 @@ class MediaViewer extends React.Component {
             (Click or Key)
           </div>
           <div className="img-counter">
-            {count + 1}/{media.length}
+            {newCount + 1}/{media.length}
           </div>
           <div
             className="img-expander"
@@ -92,7 +88,7 @@ class MediaViewer extends React.Component {
             onClick={this.handleClickExpander}
             onKeyDown={this.handleClickExpander}
           >
-            ({gridSetting} Image Box)
+            ({settingLabel} Image Box)
           </div>
         </div>
       </section>
@@ -102,6 +98,8 @@ class MediaViewer extends React.Component {
 
 MediaViewer.propTypes = {
   media: PropTypes.array,
+  mediaSetting: PropTypes.bool,
+  updateMediaSetting: PropTypes.func,
 };
 
 export default MediaViewer;

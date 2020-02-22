@@ -1,4 +1,4 @@
-import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR, LOAD_PORTFOLIO, LOAD_PORTFOLIO_SUCCESS, UPDATE_PORTFOLIO_COUNT, SET_PORTFOLIO_CURRENT } from './constants';
+import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR, LOAD_PORTFOLIO, LOAD_PORTFOLIO_SUCCESS, UPDATE_MEDIA_SETTING, SET_PORTFOLIO_CURRENT } from './constants';
 
 // The initial state of the App
 export const initialState = {
@@ -7,7 +7,7 @@ export const initialState = {
   currentUser: false,
   portfolio: [{ projectTitle: 'Software Studios', link: 'www.software-studios.com', tags: ['Shopify', 'SCSS'], media: [{ mediaSrc: 'software-studios_04.png', caption: 'Felicia', local: true }]}],
   portfolioCurrent: { projectTitle: 'Software Studios', link: 'www.software-studios.com', tags: ['Shopify', 'SCSS'], media: [{ mediaSrc: 'software-studios_04.png', caption: 'Felicia', local: true }]},
-  portfolioCount: 0,
+  mediaSetting: false,
   userData: {
     repositories: false,
   },
@@ -37,14 +37,6 @@ function appReducer(state = initialState, action) {
       return newState;
     }
 
-    case UPDATE_PORTFOLIO_COUNT: {
-      const newState = {
-        ...state,
-        portfolioCount: action.count,
-      };
-      return newState;
-    }
-
     case SET_PORTFOLIO_CURRENT: {
       const newState = {
         ...state,
@@ -58,6 +50,14 @@ function appReducer(state = initialState, action) {
         ...state,
         loading: false,
         portfolio: action.portfolio,
+      };
+      return newState;
+    }
+
+    case UPDATE_MEDIA_SETTING: {
+      const newState = {
+        ...state,
+        mediaSetting: action.setting,
       };
       return newState;
     }

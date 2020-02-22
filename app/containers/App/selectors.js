@@ -30,14 +30,14 @@ const makeSelectPortfolio = () => createSelector(
   (globalState) => globalState.portfolio
 );
 
-const makeSelectPortfolioCount = () => createSelector(
-  selectGlobal,
-  (globalState) => globalState.portfolioCount
-);
-
 const makeSelectPortfolioCurrent = () => createSelector(
   selectGlobal,
   (globalState) => globalState.portfolioCurrent
+);
+
+const makeSelectMediaSetting = () => createSelector(
+  selectGlobal,
+  (globalState) => globalState.mediaSetting
 );
 
 const makeSelectLocation = () => createSelector(
@@ -52,7 +52,7 @@ export {
   makeSelectError,
   makeSelectRepos,
   makeSelectPortfolio,
-  makeSelectPortfolioCount,
   makeSelectLocation,
   makeSelectPortfolioCurrent,
+  makeSelectMediaSetting,
 };

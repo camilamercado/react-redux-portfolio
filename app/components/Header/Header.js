@@ -5,7 +5,7 @@ import './style.scss';
 
 class Header extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { match, portfolio, portfolioCount } = this.props;
+    const { match, portfolio, portfolioCurrent } = this.props;
     if (match.path === '/work' && portfolio.length > 2) {
       return (
         <div className="header">
@@ -15,7 +15,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
             </Link>
             <ul>
               <h1>Work</h1>
-              {portfolio.map((item) => <li className={item.id === portfolio[portfolioCount].id ? 'active' : null} key={item.id}><Link to={`${match.path}/${item.id}`}>{item.projectTitle}</Link></li>)}
+              {portfolio.map((item) => <li className={item.id === portfolioCurrent.id ? 'active' : null} key={item.id}><Link to={`${match.path}/${item.id}`}>{item.projectTitle}</Link></li>)}
             </ul>
           </div>
         </div>
@@ -37,7 +37,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
 Header.propTypes = {
   match: PropTypes.object,
   portfolio: PropTypes.array,
-  portfolioCount: PropTypes.number,
+  portfolioCurrent: PropTypes.object,
 };
 
 export default Header;

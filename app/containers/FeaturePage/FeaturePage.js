@@ -10,15 +10,6 @@ import './style.scss';
 import PropTypes from 'prop-types';
 
 class FeaturePage extends Component { // eslint-disable-line react/prefer-stateless-function
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0,
-      gridSetting: 'Expand'
-    };
-    this.handleClickCounter = this.handleClickCounter.bind(this);
-    this.handleClickExpander = this.handleClickExpander.bind(this);
-  }
 
   componentDidMount() {
     const { portfolio, updatePortfolioCurrent, match } = this.props;
@@ -26,13 +17,10 @@ class FeaturePage extends Component { // eslint-disable-line react/prefer-statel
     updatePortfolioCurrent(currentIndex);
   }
 
-  componentDidUpdate(prevProps) {
-    const { portfolio, portfolioCurrent, updatePortfolioCurrent, match } = this.props;
+  componentDidUpdate() {
+    const { portfolio, updatePortfolioCurrent, match } = this.props;
     const currentIndex = portfolio.findIndex(({ id }) => id === match.params.portfolioId);
     updatePortfolioCurrent(currentIndex);
-    if (portfolioCurrent !== prevProps.portfolioCurrent) {
-      this.setState(() => ({ count: 0, gridSetting: 'Expand' }));
-    }
   }
 
   handleClickCounter = () => {
@@ -53,12 +41,13 @@ class FeaturePage extends Component { // eslint-disable-line react/prefer-statel
   };
 
   render() {
-    const { portfolio, portfolioCurrent } = this.props;
-    const { count, gridSetting } = this.state;
+    const { portfolio, portfolioCurrent, mediaSetting, updateMediaSetting } = this.props;
     const current = portfolioCurrent;
     const portfolioCount = portfolio.indexOf(portfolioCurrent);
     const nextEntry = portfolioCount === portfolio.length - 1 ? portfolio[0] : portfolio[portfolioCount + 1];
     const lastEntry = portfolioCount === 0 ? portfolio[portfolio.length - 1] : portfolio[portfolioCount - 1];
+    const settingLabel = mediaSetting ? 'Reduce' : 'Expand';
+
     if (portfolio.length < 3) {
       return (
         <section className="page-loader">
@@ -67,7 +56,7 @@ class FeaturePage extends Component { // eslint-disable-line react/prefer-statel
       );
     }
     return (
-      <section className={current.theme ? `portfolio-spread ${gridSetting} ${current.theme}` : `portfolio-spread ${gridSetting}`}>
+      <section className={current.theme ? `portfolio-spread ${settingLabel} ${current.theme}` : `portfolio-spread ${settingLabel}`}>
         <div className="portfolio-nav last">
           <Link to={`${lastEntry.id}`}>
             <h2>L a s t</h2>
@@ -75,7 +64,7 @@ class FeaturePage extends Component { // eslint-disable-line react/prefer-statel
           </Link>
         </div>
         <div className="left">
-          <MediaViewer media={current.media} />
+          <MediaViewer media={current.media} mediaSetting={mediaSetting} updateMediaSetting={updateMediaSetting} />
         </div>
         <div className="right">
           <div className="text-container">
@@ -111,6 +100,8 @@ FeaturePage.propTypes = {
   portfolioCurrent: PropTypes.object,
   portfolio: PropTypes.array,
   updatePortfolioCurrent: PropTypes.func,
+  mediaSetting: PropTypes.bool,
+  updateMediaSetting: PropTypes.func,
 };
 
 export default FeaturePage;

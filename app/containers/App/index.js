@@ -5,10 +5,10 @@ import portfolioData from 'database/data';
 
 import {
   makeSelectPortfolio,
-  makeSelectPortfolioCount,
   makeSelectPortfolioCurrent,
+  makeSelectMediaSetting
 } from 'containers/App/selectors';
-import { portfolioLoaded, updatePortfolioCount, updatePortfolioCurrent } from './actions';
+import { portfolioLoaded, updatePortfolioCurrent, updateMediaSetting } from './actions';
 import App from './App';
 
 const mapDispatchToProps = (dispatch) => ({
@@ -17,19 +17,18 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(portfolioLoaded(portfolioData));
     dispatch(updatePortfolioCurrent(portfolioData[0]));
   },
-  updatePortfolioCount: (evt) => {
-    if (evt !== undefined && evt.preventDefault) evt.preventDefault();
-    dispatch(updatePortfolioCount(evt));
-  },
   updatePortfolioCurrent: (evt) => {
     dispatch(updatePortfolioCurrent(portfolioData[evt]));
+  },
+  updateMediaSetting: (evt) => {
+    dispatch(updateMediaSetting(evt));
   }
 });
 
 const mapStateToProps = createStructuredSelector({
   portfolio: makeSelectPortfolio(),
-  portfolioCount: makeSelectPortfolioCount(),
   portfolioCurrent: makeSelectPortfolioCurrent(),
+  mediaSetting: makeSelectMediaSetting()
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

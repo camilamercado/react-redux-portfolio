@@ -22,8 +22,8 @@ import {
   LOAD_PORTFOLIO,
   LOAD_PORTFOLIO_SUCCESS,
   LOAD_PORTFOLIO_ERROR,
-  UPDATE_PORTFOLIO_COUNT,
   SET_PORTFOLIO_CURRENT,
+  UPDATE_MEDIA_SETTING,
 } from './constants';
 
 /**
@@ -41,13 +41,6 @@ export function loadPortfolio() {
   return { type: LOAD_PORTFOLIO };
 }
 
-export function updatePortfolioCount(count) {
-  return {
-    type: UPDATE_PORTFOLIO_COUNT,
-    count,
-  };
-}
-
 export function portfolioLoaded(portfolio) {
   return {
     type: LOAD_PORTFOLIO_SUCCESS,
@@ -59,6 +52,13 @@ export function updatePortfolioCurrent(entry) {
   return {
     type: SET_PORTFOLIO_CURRENT,
     entry,
+  };
+}
+
+export function updateMediaSetting(setting) {
+  return {
+    type: UPDATE_MEDIA_SETTING,
+    setting,
   };
 }
 

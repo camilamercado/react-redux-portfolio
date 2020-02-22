@@ -29,8 +29,6 @@ class App extends Component { // eslint-disable-line react/prefer-stateless-func
 
 App.propTypes = {
   onInit: PropTypes.func,
-  updatePortfolioCount: PropTypes.func,
-  portfolioCount: PropTypes.number,
   portfolio: PropTypes.array,
 };
 

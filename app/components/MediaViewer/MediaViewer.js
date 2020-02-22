@@ -88,7 +88,7 @@ class MediaViewer extends React.Component {
             onClick={this.handleClickExpander}
             onKeyDown={this.handleClickExpander}
           >
-            ({settingLabel} Image Box)
+            ({settingLabel} Media)
           </div>
         </div>
       </section>

@@ -29,6 +29,7 @@
   }
   .img-container {
     z-index: 1;
+    margin: 2%;
     @include mobile-tablet {
       height: auto;
       display: block;

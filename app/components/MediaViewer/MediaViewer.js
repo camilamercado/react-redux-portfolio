@@ -23,6 +23,9 @@ class MediaViewer extends React.Component {
     const { media, updateMediaSetting } = this.props;
     if (media !== prevProps.media) {
       updateMediaSetting(false);
+      this.setState(() => ({
+        count: 0
+      }));
     }
   }
 

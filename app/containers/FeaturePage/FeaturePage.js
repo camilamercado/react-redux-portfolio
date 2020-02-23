@@ -23,31 +23,19 @@ class FeaturePage extends Component { // eslint-disable-line react/prefer-statel
     updatePortfolioCurrent(currentIndex);
   }
 
-  handleClickCounter = () => {
-    const { portfolioCurrent } = this.props;
-    const { count } = this.state;
-    const newCount = count === portfolioCurrent.media.length - 1 ? 0 : count + 1;
-    this.setState(() => ({
-      count: newCount
-    }));
-  };
-
-  handleClickExpander = () => {
-    const { gridSetting } = this.state;
-    const newSetting = gridSetting === 'Expand' ? 'Reduce' : 'Expand';
-    this.setState(() => ({
-      gridSetting: newSetting
-    }));
-  };
-
   render() {
     const { portfolio, portfolioCurrent, mediaSetting, updateMediaSetting } = this.props;
     const current = portfolioCurrent;
     const portfolioCount = portfolio.indexOf(portfolioCurrent);
     const nextEntry = portfolioCount === portfolio.length - 1 ? portfolio[0] : portfolio[portfolioCount + 1];
-    const lastEntry = portfolioCount === 0 ? portfolio[portfolio.length - 1] : portfolio[portfolioCount - 1];
+    const lastEntry = portfolioCount <= 0 ? portfolio[portfolio.length - 1] : portfolio[portfolioCount - 1];
     const settingLabel = mediaSetting ? 'Reduce' : 'Expand';
+    //const json = JSON.parse(current.text);
+    const stringData = current.text ? current.text.replace(new RegExp("\n", "g"), "<br />") : 'lorem ipsum' ;
 
+    //json.body = json.body.replace(/\n/g, '<br />');
+    console.log(stringData)
+    
     if (portfolio.length < 3) {
       return (
         <section className="page-loader">
@@ -74,12 +62,7 @@ class FeaturePage extends Component { // eslint-disable-line react/prefer-statel
               {current.tags.map((item) => <li key={item}>{item}</li>)}
             </ul>
             <p>
-              In 2015 I co-founded an NY-based print studio specializing in servicing the arts and fashion community with high-quality digital paper/fabric printing and bespoke production for products and installations.
-              As a Co-Founder, I performed a large range of work at our studio from the management and fabrication of projects to the development of all of our websites and web stores (creating both static sites and custom designed Shopify themes).
-            </p>
-            <p>
-              In 2015 I co-founded an NY-based print studio specializing in servicing the arts and fashion community with high-quality digital paper/fabric printing and bespoke production for products and installations.
-              As a Co-Founder, I performed a large range of work at our studio from the management and fabrication of projects to the development of all of our websites and web stores (creating both static sites and custom designed Shopify themes).
+              {current.text}
             </p>
           </div>
         </div>
